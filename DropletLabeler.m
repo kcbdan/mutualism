@@ -1,20 +1,20 @@
 
 %% This function takes as input the absolute path of extracted image files and outputs the labeled locations
-function [BubblePoints] = BubbleLabeler(path,skip,loadFile)
+function [DropletPoints] = DropletLabeler(path,skip,loadFile)
     %% Read in  frames
    if loadFile
-        load([path,'bubblesData.mat']);
+        load([path,'DropletData.mat']);
     else
         verify = input('Are you sure you want to label from the first frame? exisiting labels will be deleted (Y/N) : ');
-        if exist([path,'bubblesData.mat'],'file') 
-            load([path,'bubblesData.mat']);   
-            save([path,'bubblesData_bkp.mat'],'frame','labelId')
+        if exist([path,'DropletData.mat'],'file') 
+            load([path,'DropletData.mat']);   
+            save([path,'DropletData_bkp.mat'],'frame','labelId')
         end
         if(strcmp(verify,'Y'))
             frame = [];
             labelId = 1;
         else
-            BubblePoints = []; return
+            DropletPoints = []; return
         end
     end
     
