@@ -1,9 +1,9 @@
-function [] = PlotBubbles(path,visType,p2micromfactor)
+function [] = Plottracks(path,visType,p2micromfactor)
     if (nargin<3)
         p2micromfactor=1;
     end
     imagefiles = dir([path,'*.png']);
-    load([path,'bubblesData.mat']);
+    load([path,'DropletData.mat']);
     %frame=[];
     nfiles = length(imagefiles);    % Number of imgs found
     sz=36;
@@ -20,7 +20,7 @@ function [] = PlotBubbles(path,visType,p2micromfactor)
             
             %if ~isempty(frame{imCnt})
                 for i = 1:size(frame{imCnt}.locs,2)-1
-                    %title('Motion of Defects over time');
+                    %title('Motion of Droplets over time');
                     %scatter(frame{imCnt}.locs{i}(1),frame{imCnt}.locs{i}(2),sz,'MarkerEdgeColor',[1 0 0],...
                        %'MarkerFaceColor',[1 0 0],...
                        %'LineWidth',1)
@@ -37,7 +37,7 @@ function [] = PlotBubbles(path,visType,p2micromfactor)
             %if exists(frame{imCnt}.locs)
                 for i = 1:size(frame{imCnt}.locs,2)-1
                     figure(1);
-                    title('Motion of Particles over time');
+                    title('Motion of Droplets over time');
                     xlabel('location of particle in X (micrometer)');
                     ylabel('location of particle in Y (micrometer)');
                     %p2micromfactor = 0.0449;
