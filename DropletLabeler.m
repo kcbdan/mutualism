@@ -29,7 +29,7 @@ function [DropletPoints] = DropletLabeler(path,skip,loadFile)
   sz = 40;
   ESC = 27;
   for imCnt = labelId+1:skip:size(images,2)
-    BubblePoints=[];
+    DropletPoints=[];
     close all;
     handle = figure('Position',[00,0,768*1.5,768*1.5]);
     title(['IMAGE number', num2str(imCnt)])
@@ -55,7 +55,7 @@ function [DropletPoints] = DropletLabeler(path,skip,loadFile)
             end
             loc = [x y];
           end
-          BubblePoints{cnt}=loc;
+          DropletPoints{cnt}=loc;
           cnt=cnt+1;                
          % check for keys
          k=get(gcf,'CurrentCharacter');
@@ -64,14 +64,14 @@ function [DropletPoints] = DropletLabeler(path,skip,loadFile)
              % now process the key as required
              if k=='q' 
                  finish=true;
-                 BubblePoints{cnt-1}=[];
+                 DropletPoints{cnt-1}=[];
              end
           end
      end      
      close(handle);
-     frame{imCnt}.locs=BubblePoints;
+     frame{imCnt}.locs=DropletPoints;
      labelId=imCnt;
-     save([path, 'bubblesData.mat'],'frame','labelId')
+     save([path, 'DropletData.mat'],'frame','labelId')
   end
 end
    
